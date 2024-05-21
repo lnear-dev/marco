@@ -23,8 +23,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest",
-    "generate-patterns": "node src/scripts/generate-patterns.js"
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
@@ -36,4 +35,3 @@
     "vite-plugin-dts": "^3.8.3"
   }
 }
-

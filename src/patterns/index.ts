@@ -190,7 +190,7 @@ const passes: Pass[] = [
  * @example
  *```typescript
  *console.log(
- *  `div { ${marco(
+ *  `div { ${replace(
  *    'transition-colors',
  *    'transition-none',
  *    'blur-md',
