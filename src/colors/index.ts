@@ -2,11 +2,11 @@ import base from './base.json';
 import rgb from './rgb.json';
 import shades from './shades.json';
 export { base, rgb, shades };
-type BaseColor = keyof typeof base;
-type RGBColor = keyof typeof rgb;
-type KnownShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
-type KnownShadeKeys = keyof typeof shades;
-type ShadyColor = `${KnownShadeKeys}-${KnownShades}`;
+export type BaseColor = keyof typeof base;
+export type RGBColor = keyof typeof rgb;
+export type KnownShades = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
+export type KnownShadeKeys = keyof typeof shades;
+export type ShadyColor = `${KnownShadeKeys}-${KnownShades}`;
 const isShadyColor = (color: string): color is ShadyColor => {
     const [base, shade] = color.split('-');
     return base in shades && parseInt(shade) % 50 === 0;

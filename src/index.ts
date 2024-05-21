@@ -1,5 +1,9 @@
 import { CSSBreakpointOptions, KnownBreakpoint, MediaQueryAlias, mediaQueryMap } from './screens';
 import { optimizeCss } from './css-optimize';
+export { CSSBreakpointOptionsImplementer } from './CSSBreakpointOptionsImplementer';
+export * from './screens';
+export * from './colors';
+export * from './patterns';
 
 export const generateCSSImpl = (options: CSSBreakpointOptions): string => {
     let out = '';
