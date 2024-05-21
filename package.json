@@ -1,0 +1,39 @@
+{
+  "name": "@lnear/marco",
+  "private": false,
+  "version": "0.0.2",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lnear-dev/marco.git"
+  },
+  "main": "./dist/lnear-marco.js",
+  "typings": "./dist/lnear-marco.d.ts",
+  "module": "./dist/lnear-marco.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lnear-marco.js",
+      "require": "./dist/lnear-marco.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "generate-patterns": "node src/scripts/generate-patterns.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "ts-node": "^10.4.0",
+    "lightningcss": "1.25.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vitest": "1.6.0",
+    "vite-plugin-dts": "^3.8.3"
+  }
+}
+
