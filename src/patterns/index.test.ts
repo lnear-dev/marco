@@ -1,11 +1,12 @@
 import { test, expect } from 'vitest';
-import { generateOptimizedCSS } from '../index.js';
+import { generateCSS as impl } from '../index.js';
 import { replace } from './index.js';
 import expectations from './expect.json';
 import { PrefixMap } from '../modifiers/PrefixMap.js';
 import { CSSBreakpointOptionsImplementer } from '../CSSBreakpointOptionsImplementer.js';
 const css = (strings: TemplateStringsArray) =>
-  strings.join('').replace(/\s+/g, ' ');
+  strings.join('').replace(/\s+/g, '');
+const generateCSS = (opt: CSSBreakpointOptionsImplementer) => impl(opt).replace(/\s+/g, '');
 test('marco-replace-all', () => {
   const src = (() => {
     const keys = Object.keys(expectations);
@@ -67,9 +68,10 @@ test('generateCSS - default options', () => {
       }
     `,
   });
-  expect(generateOptimizedCSS(opt)).toBe(
+  expect(generateCSS(opt)).toBe(
     // prettier-ignore
-    css`div{width:100%}@media (width>=768px){div{width:75%}}@media (width>=1024px){div{width:50%}}`
+    // css`div{width:100%}@media (width>=768px){div{width:75%}}@media (width>=1024px){div{width:50%}}`
+    css` div { width: 100%; } @media(min-width: 768px){  div { width: 75%; }  }@media(min-width: 1024px){  div { width: 50%; }  } `
   );
 });
 
@@ -106,9 +108,9 @@ test('generateCSS - custom options', () => {
     },
     macros: 'sr-only',
   });
-  expect(generateOptimizedCSS(opt)).toBe(
+  expect(generateCSS(opt)).toBe(
     // prettier-ignore
-    css`:host{clip:rect(0,0,0,0);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}div{width:80%}@media (width>=600px){div{width:60%}}@media (width>=1000px){div{width:40%}}@media (prefers-color-scheme:dark){div{background-color:#000}}`
+    css`:host{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}div{width:80%;}@media(min-width:600px){div{width:60%;}}@media(min-width:1000px){div{width:40%;}}@media(prefers-color-scheme:dark){div{background-color:black;}}`
   );
   expect(opt.screenSizeAt('sm')).toBe('600px');
   expect(opt.screenSizeAt('sm', 'min')).toBe('600px');
@@ -145,26 +147,26 @@ test('generateCSS - macros', () => {
   });
 
 
-  expect(generateOptimizedCSS(new CSSBreakpointOptionsImplementer({
+  expect(generateCSS(new CSSBreakpointOptionsImplementer({
     ..._opt,
     macros: 'sr-only sm:not-sr-only',
   }))).toBe(
     // prettier-ignore
-    css`:host{clip:rect(0,0,0,0);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}@media (width>=640px){:host{clip:auto;white-space:normal;width:auto;height:auto;margin:0;padding:0;position:static;overflow:visible}}div{width:80%}@media (width>=640px){div{width:60%}}@media (width>=1024px){div{width:40%}}@media (prefers-color-scheme:dark){div{background-color:#000}}`
+    css`:host{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;@media(min-width:640px){position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal;}}div{width:80%;}@media(min-width:640px){div{width:60%;}}@media(min-width:1024px){div{width:40%;}}@media(prefers-color-scheme:dark){div{background-color:black;}}`
   );
-  expect(generateOptimizedCSS(new CSSBreakpointOptionsImplementer({
+  expect(generateCSS(new CSSBreakpointOptionsImplementer({
     ..._opt,
     macros: '*:not-sr-only',
   }))).toBe(
     // prettier-ignore
-    css`:host>*{clip:auto;white-space:normal;width:auto;height:auto;margin:0;padding:0;position:static;overflow:visible}div{width:80%}@media (width>=640px){div{width:60%}}@media (width>=1024px){div{width:40%}}@media (prefers-color-scheme:dark){div{background-color:#000}}`
+    css`:host{&>*{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal;}}div{width:80%;}@media(min-width:640px){div{width:60%;}}@media(min-width:1024px){div{width:40%;}}@media(prefers-color-scheme:dark){div{background-color:black;}}`
   );
-  expect(generateOptimizedCSS(new CSSBreakpointOptionsImplementer({
+  expect(generateCSS(new CSSBreakpointOptionsImplementer({
     ..._opt,
     macros: '*:col-auto',
   }))).toBe(
     // prettier-ignore
-    css`:host>*{grid-column:auto}div{width:80%}@media (width>=640px){div{width:60%}}@media (width>=1024px){div{width:40%}}@media (prefers-color-scheme:dark){div{background-color:#000}}`
+    css`:host{&>*{grid-column:auto;}}div{width:80%;}@media(min-width:640px){div{width:60%;}}@media(min-width:1024px){div{width:40%;}}@media(prefers-color-scheme:dark){div{background-color:black;}}`
   );
 
 });

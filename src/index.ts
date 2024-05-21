@@ -1,11 +1,10 @@
 import { CSSBreakpointOptions, KnownBreakpoint, MediaQueryAlias, mediaQueryMap } from './screens';
-import { optimizeCss } from './css-optimize';
 export { CSSBreakpointOptionsImplementer } from './CSSBreakpointOptionsImplementer';
 export * from './screens';
 export * from './colors';
 export * from './patterns';
 
-export const generateCSSImpl = (options: CSSBreakpointOptions): string => {
+export const generateCSS = (options: CSSBreakpointOptions): string => {
     let out = '';
     if (options.stylesheet) out += options.stylesheet?.toString();
     Object.keys(options.screens).forEach((breakpoint) => {
@@ -33,9 +32,3 @@ export const generateCSSImpl = (options: CSSBreakpointOptions): string => {
     }
     return out;
 };
-
-
-export const generateCSS = (options: CSSBreakpointOptions) =>
-    generateCSSImpl(options);
-export const generateOptimizedCSS = (options: CSSBreakpointOptions) =>
-    optimizeCss(generateCSSImpl(options));
