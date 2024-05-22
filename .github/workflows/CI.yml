@@ -28,9 +28,9 @@ jobs:
 
       #composer stuff
       - name: Install Composer
-        uses: php-actions/composer@v6
+        uses: shivammathur/setup-php@v2
         with:
-          php_version: "8.2"
+          php-version: "8.2"
 
       - name: Composer update
         run: composer update
