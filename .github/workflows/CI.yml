@@ -32,7 +32,7 @@ jobs:
         with:
           php_version: "8.2"
 
-      - name: Composer install
-        run: composer install
+      - name: Composer update
+        run: composer update
       - name: Composer test
         run: composer test
