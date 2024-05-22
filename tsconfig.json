@@ -32,6 +32,6 @@
         "esm": true
     },
     "include": [
-        "src",
+        "js",
     ]
 }

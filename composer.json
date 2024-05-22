@@ -1,0 +1,30 @@
+{
+  "name": "lnear/marco",
+  "description": "CSS Macro utility",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Lame\\Marco\\": "php/",
+      "Lame\\Marco\\Tests\\": "php-tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Lanre Ajao",
+      "email": "hi@lnear.dev"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require-dev": {
+    "pestphp/pest": "3.x-dev"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/pest -vvv"
+  }
+}

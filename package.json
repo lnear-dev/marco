@@ -1,11 +1,18 @@
 {
   "name": "@lnear/marco",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "files": [
     "dist"
   ],
+  "keywords": [
+    "marco",
+    "lnear",
+    "failwind",
+    "unwind"
+  ],
+  "homepage": "https://docs.lnear.dev/marco",
   "repository": {
     "type": "git",
     "url": "https://github.com/lnear-dev/marco.git"
@@ -23,7 +30,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "test-php": "./vendor/bin/pest",
+    "test-both": "npm run test-php && npm run test"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

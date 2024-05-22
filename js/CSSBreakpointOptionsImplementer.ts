@@ -11,13 +11,13 @@ export class CSSBreakpointOptionsImplementer
     public xl?: CSSResultGroup;
     public dark?: CSSResultGroup;
     public light?: CSSResultGroup;
-    public "2xl"?: CSSResultGroup;
+    public xl2?: CSSResultGroup;
     public screens: Screens = {
         sm: { min: '640px' },
         md: { min: '768px' },
         lg: { min: '1024px' },
         xl: { min: '1280px' },
-        "2xl": { min: '1536px' },
+        xl2: { min: '1536px' },
         dark: { prefersColorScheme: 'dark' },
         light: { prefersColorScheme: 'light' },
     };
@@ -30,7 +30,7 @@ export class CSSBreakpointOptionsImplementer
         this.md = options.md;
         this.lg = options.lg;
         this.xl = options.xl;
-        this["2xl"] = options["2xl"];
+        this.xl2 = options.xl2;
         this.dark = options.dark;
         this.light = options.light;
         this.screens = options.screens || this.screens;
@@ -50,15 +50,13 @@ export class CSSBreakpointOptionsImplementer
                 case 'max-md':
                 case 'max-lg':
                 case 'max-xl':
-                case 'max-2xl':
+                case 'max-xl2':
                     return `@media not all and (min-width: ${this.screenSizeAt(
                         modifier.slice(4) as KnownBreakpoint
                     )}) { ${value} }`;
                 case 'min':
                 case 'max':
                     return `@media (min-width: ${value}) { ${value} }`;
-                // case 'max':
-                //     return `@media not all and (min-width: ${value}) { ${value} }`;
                 case 'supports':
                     return `@supports (${value}) { ${value} }`;
                 case 'aria':

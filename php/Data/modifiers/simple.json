@@ -47,6 +47,7 @@
   "aria-required": "&[aria-required=“true”]",
   "aria-selected": "&[aria-selected=“true”]",
   "dark": "@media (prefers-color-scheme: dark)",
+  "light": "@media (prefers-color-scheme: light)",
   "portrait": "@media (orientation: portrait)",
   "landscape": "@media (orientation: landscape)",
   "motion-safe": "@media (prefers-reduced-motion: no-preference)",
@@ -55,4 +56,3 @@
   "contrast-less": "@media (prefers-contrast: less)",
   "print": "@media print"
 }
-

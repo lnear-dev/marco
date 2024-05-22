@@ -1,4 +1,4 @@
-import simpleModifiers from './simple.json';
+import simpleModifiers from '../../php/Data/modifiers/simple.json';
 export { simpleModifiers };
 export { PrefixMap } from './PrefixMap';
 export type KnownModifier = keyof typeof simpleModifiers;

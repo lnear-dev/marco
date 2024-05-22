@@ -84,7 +84,7 @@ export type KnownBreakpoint =
     | 'md'
     | 'lg'
     | 'xl'
-    | '2xl'
+    | 'xl2'
     | 'dark'
     | 'light';
 export const isMediaQueryAlias = (value: string): value is MediaQueryAlias => {
@@ -146,7 +146,7 @@ export const defaultScreenOptions: Screens = {
     'md': { min: '768px' },
     'lg': { min: '1024px' },
     'xl': { min: '1280px' },
-    '2xl': { min: '1536px' },
+    'xl2': { min: '1536px' },
     'dark': { prefersColorScheme: 'dark' },
     'light': { prefersColorScheme: 'light' },
 };

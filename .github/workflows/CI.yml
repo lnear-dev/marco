@@ -25,3 +25,12 @@ jobs:
         run: pnpm test
       - name: Build
         run: pnpm build
+
+      #composer stuff
+      - name: Install Composer
+        uses: php-actions/composer@v6
+
+      - name: Composer install
+        run: composer install
+      - name: Composer test
+        run: composer test

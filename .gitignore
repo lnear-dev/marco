@@ -12,3 +12,5 @@ package-lock.json
 *.env
 # exclude IntelliJ/WebStorm stuff
 .idea
+
+/vendor/

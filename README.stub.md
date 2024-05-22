@@ -1,27 +1,45 @@
-# @lnear/marco - CSS Utilities Library
+# Marco - CSS Macro Library
 
+[[toc]]
 This is a lightweight (and low level) CSS utilities library aimed at simplifying and standardizing common CSS patterns. It provides a utility function for generating CSS properties and values dynamically.
 
 ## Installation
 
-You can install this library via npm:
+This library is implemented in both TypeScript and PHP. You can install the TypeScript version via npm:
 
 ```bash
 npm install @lnear/marco
 ```
 
+and the PHP version via composer:
+
+```bash
+composer require lnear/marco
+```
+
 ## Usage
 
 ```javascript
-import { replace } from '@lnear/marco';
+import { replace } from "@lnear/marco";
 console.log(
   `div { ${replace(
-    'transition-colors',
-    'transition-none',
-    'blur-md',
-    'drop-shadow-xl'
+    "transition-colors",
+    "transition-none",
+    "blur-md",
+    "drop-shadow-xl"
   )} }`
 );
+```
+
+```php
+use Lnear\Marco\Marco;
+$m = Marco::macro(
+  'transition-colors',
+  'transition-none',
+  'blur-md',
+  'drop-shadow-xl'
+);
+echo "div { $m }";
 ```
 
 This will generate the following CSS string:
@@ -62,4 +80,3 @@ For example, only "saturate-(0, 50, 100, 150, 200)" are documented here, but any
 {!!colors!!}
 
 </details>
-

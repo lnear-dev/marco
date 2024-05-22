@@ -5,15 +5,12 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: resolve(__dirname, "js/index.ts"),
       name: "Lnear Marco",
       fileName: "lnear-marco",
       formats: ["es"],
     },
-    rollupOptions: {
-      external: /^lightningcss/,
-    },
   },
-  resolve: { alias: { src: resolve('src/') } },
+  resolve: { alias: { src: resolve('js/') } },
   plugins: [dts({ rollupTypes: true })],
 });

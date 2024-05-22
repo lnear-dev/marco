@@ -1,6 +1,6 @@
-import base from './base.json';
-import rgb from './rgb.json';
-import shades from './shades.json';
+import base from '../../php/Data/colors/base.json';
+import rgb from '../../php/Data/colors/rgb.json';
+import shades from '../../php/Data/colors/shades.json';
 export { base, rgb, shades };
 export type BaseColor = keyof typeof base;
 export type RGBColor = keyof typeof rgb;

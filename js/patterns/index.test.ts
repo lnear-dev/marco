@@ -1,7 +1,8 @@
 import { test, expect } from 'vitest';
 import { generateCSS as impl } from '../index.js';
 import { replace } from './index.js';
-import expectations from './expect.json';
+// import expectations from './expect.json';
+import expectations from '../../php/Data/patterns/expect.json';
 import { PrefixMap } from '../modifiers/PrefixMap.js';
 import { CSSBreakpointOptionsImplementer } from '../CSSBreakpointOptionsImplementer.js';
 const css = (strings: TemplateStringsArray) =>
@@ -102,7 +103,7 @@ test('generateCSS - custom options', () => {
       'md': { min: '800px' },
       'lg': { min: '1000px' },
       'xl': { min: '1200px' },
-      '2xl': { min: '1400px' },
+      'xl2': { min: '1400px' },
       'dark': { prefersColorScheme: 'dark' },
       'light': { prefersColorScheme: 'light' },
     },
