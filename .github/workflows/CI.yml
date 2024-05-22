@@ -30,7 +30,7 @@ jobs:
       - name: Install Composer
         uses: php-actions/composer@v6
         with:
-          php-version: "8.2"
+          php_version: "8.2"
 
       - name: Composer install
         run: composer install
