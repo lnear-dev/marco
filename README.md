@@ -58,6 +58,100 @@ div {
 }
 ```
 
+You can also use the `generateCSS` function to generate CSS strings for web components (or any other scoped style engine that supports :host) with multiple macros:
+
+```javascript
+import { generateCSS } from "@lnear/marco";
+console.log(
+  generateCSS({
+    sm: "div { color: red; }",
+    md: "div { color: green; }",
+    lg: "div { color: blue; }",
+    xl: "div { color: yellow; }",
+    xl2: "div { color: pink; }",
+    dark: "div { color: black; }",
+    light: "div { color: white; }",
+    macros: "sm:md:lg:xl:xl2:dark:bg-red-500",
+  })
+);
+```
+
+or the `generate` method of the `Marco` class in PHP:
+
+```php
+use Lnear\Marco\Marco;
+echo Marco::generate(
+  sm: 'div { color: red; }',
+  md: 'div { color: green; }',
+  lg: 'div { color: blue; }',
+  xl: 'div { color: yellow; }',
+  xl2: 'div { color: pink; }',
+  dark: 'div { color: black; }',
+  light: 'div { color: white; }',
+  macros: 'sm:md:lg:xl:xl2:dark:bg-red-500',
+);
+```
+
+Both will generate the following CSS string:
+
+```css
+:host {
+  @media (min-width: 640px) {
+    background-color: rgb(239 68 68);
+  }
+  @media (min-width: 768px) {
+    background-color: rgb(239 68 68);
+  }
+  @media (min-width: 1024px) {
+    background-color: rgb(239 68 68);
+  }
+  @media (min-width: 1280px) {
+    background-color: rgb(239 68 68);
+  }
+  @media (min-width: 1536px) {
+    background-color: rgb(239 68 68);
+  }
+  @media (prefers-color-scheme: dark) {
+    background-color: rgb(239 68 68);
+  }
+}
+@media (min-width: 640px) {
+  div {
+    color: red;
+  }
+}
+@media (min-width: 768px) {
+  div {
+    color: green;
+  }
+}
+@media (min-width: 1024px) {
+  div {
+    color: blue;
+  }
+}
+@media (min-width: 1280px) {
+  div {
+    color: yellow;
+  }
+}
+@media (min-width: 1536px) {
+  div {
+    color: pink;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  div {
+    color: black;
+  }
+}
+@media (prefers-color-scheme: light) {
+  div {
+    color: white;
+  }
+}
+```
+
 More docs coming soon...
 
 ## Patterns
