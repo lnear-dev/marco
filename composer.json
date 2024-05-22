@@ -16,6 +16,9 @@
     }
   ],
   "minimum-stability": "dev",
+  "require": {
+    "php": "^8.2"
+  },
   "require-dev": {
     "pestphp/pest": "3.x-dev"
   },
